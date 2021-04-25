@@ -18,14 +18,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="349dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/weatherStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="30dp"
                 android:fontFamily="@font/merriweather_light"
                 android:text="Clear"
@@ -60,13 +61,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/merriweather_light"
-                android:text="Updated"
+                android:text="@string/updated"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:typeface="normal" />
-
         </LinearLayout>
 
         <androidx.gridlayout.widget.GridLayout
@@ -103,24 +103,26 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:contentDescription="@string/can_t"
                         android:src="@drawable/wind" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Wind Speed"
+                        android:text="@string/wind_speed"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/windSpeedView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Value"
+                        android:text="@string/value"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -153,19 +155,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Min temperature"
+                        android:text="@string/min_temperature"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/minTemperatureView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Value"
+                        android:text="@string/value"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -193,24 +196,26 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/wind" />
+                        android:contentDescription="@string/can_t"
+                        android:src="@drawable/thermometer" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="HOME"
+                        android:text="@string/max_temperature"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/maxTemperatureView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Value"
+                        android:text="@string/value"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -233,33 +238,50 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical"
-                    app:layout_gravity="center_vertical|center_horizontal">
+                    app:layout_gravity="center_vertical|center_horizontal"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/wind" />
+                        android:contentDescription="@string/can_t"
+                        android:src="@drawable/reload" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="HOME"
+                        android:text="@string/refresh"
                         android:textAlignment="center"
                         android:textColor="#fff"
-                        android:textSize="12dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Value"
-                        android:textAlignment="center"
-                        android:textColor="#fff"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
         </androidx.gridlayout.widget.GridLayout>
-
     </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <TextView
+        android:id="@+id/errorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Something went wrong"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
