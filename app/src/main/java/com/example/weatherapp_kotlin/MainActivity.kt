@@ -20,7 +20,6 @@ const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
 
 class MainActivity : AppCompatActivity() {
     private val API_KEY: String = "0dbb8c4b976379671419e66c70c93ded"
-    private var TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +52,6 @@ class MainActivity : AppCompatActivity() {
                 val response = api.getWeather().awaitResponse()
                 if (response.isSuccessful) {
                     val data = response.body()!!
-                    Log.d(TAG, data.toString())
 
                     withContext(Dispatchers.Main) {
                         cityView.text = data.name
