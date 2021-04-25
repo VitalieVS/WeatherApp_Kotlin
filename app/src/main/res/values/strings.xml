@@ -7,4 +7,5 @@
     <string name="min_temperature">Min temperature</string>
     <string name="wind_speed">Wind Speed</string>
     <string name="updated">Updated</string>
+    <string name="tempValue"> %1$.2f °C</string>
 </resources>
